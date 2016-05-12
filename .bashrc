@@ -64,6 +64,15 @@ function close
 
 function gitd
 {
+    # We are using a git hack (worktree="../../") in order to version control
+    # the home directory but not have a .git directory there. This forces to
+    # run git commands from ~/dotfiles, some of which don't work. This function
+    # uses the fact that git reads the gitdir from a file called .git so that
+    # we can run git commands from the home directory if needed.
+
+    # This could be done more easily with an alias:
+    # alias gitd="git --git-dir=/home/${USER}/dotfiles/.git"
+    # But that would work from anywhere which can be confusing.
     local git_location_file=/home/${USER}/.git
     echo "gitdir: /home/${USER}/dotfiles/.git" > "${git_location_file}"
     git "${@}"
