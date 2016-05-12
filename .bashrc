@@ -18,6 +18,7 @@ alias ll="ls -alF"
 alias la="ls -A"
 alias lltr="ls -ltr"
 alias l="ls -CFl"
+alias ks="ls"
 
 alias cd..="cd .."
 alias cd-="cd -"
