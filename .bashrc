@@ -62,6 +62,14 @@ function close
     for PID in `pgrep "${1%.*}"`; do kill -n 9 ${PID} &> /dev/null & done
 }
 
+function gitd
+{
+    local git_location_file=/home/${USER}/.git
+    echo "gitdir: /home/${USER}/dotfiles/.git" > "${git_location_file}"
+    git "${@}"
+    rm "${git_location_file}"
+}
+
 function ssht
 {
     test -n "$1" && ssh -t "$1" "bash -l"
@@ -92,4 +100,3 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
