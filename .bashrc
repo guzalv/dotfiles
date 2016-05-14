@@ -25,7 +25,12 @@ alias cd-="cd -"
 
 alias p8="ping 8.8.8.8"
 
-alias rm="rm -I"
+if [ $(uname) = "Darwin" ]; then
+    alias rm="rm -i"
+else
+    alias rm="rm -I"
+fi
+
 alias mv="mv -i"
 alias cp="cp -i"
 
@@ -73,10 +78,10 @@ function gitd
     # This could be done more easily with an alias:
     # alias gitd="git --git-dir=/home/${USER}/dotfiles/.git"
     # But that would work from anywhere which can be confusing.
-    local git_location_file=/home/${USER}/.git
-    echo "gitdir: /home/${USER}/dotfiles/.git" > "${git_location_file}"
+    local git_location_file=${HOME}/.git
+    echo "gitdir: ${HOME}/dotfiles/.git" > "${git_location_file}"
     git "${@}"
-    rm "${git_location_file}"
+    rm -f "${git_location_file}"
 }
 
 function ssht
