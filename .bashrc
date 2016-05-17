@@ -106,8 +106,8 @@ function g
 
 # Misc settings from Ubuntu default .bashrc
 HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 shopt -s histappend
 shopt -s checkwinsize
