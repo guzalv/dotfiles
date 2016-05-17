@@ -5,7 +5,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
 import XMonad.Layout.Reflect
 import XMonad.Layout.MouseResizableTile
-import qualified Data.Map        as M
+import qualified Data.Map as M
 
 
 -- Borders
@@ -14,32 +14,17 @@ myFocusedBorderColor = "#00ff00"
 
 -- Keys
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
-	[ ((modm, xK_Up ), sendMessage ShrinkSlave)
+    [ ((modm, xK_Up ), sendMessage ShrinkSlave)
         , ((modm, xK_Down ), sendMessage ExpandSlave)
         , ((modm .|. controlMask, xK_l ), spawn "gnome-screensaver-command --lock")
-	]
+    ]
 
 -- Layout
 myLayoutHook = smartBorders $ mouseResizableTile { draggerType = BordersDragger }
-	                      ||| mouseResizableTile { isMirrored = True,
-                                                       draggerType = BordersDragger } 
+                              ||| mouseResizableTile { isMirrored = True,
+                                                       draggerType = BordersDragger }
                               ||| Grid
                               ||| noBorders Full
-  where
-    -- default tiling algorithm partitions the screen into two panes
-    tiled = Tall nmaster delta ratio
- 
-    -- master pane on the right
-    tiled_reflected   = reflectHoriz $ Tall nmaster delta ratio
- 
-    -- The default number of windows in the master pane
-    nmaster = 1
- 
-    -- Default proportion of screen occupied by master pane
-    ratio   = 1/2
- 
-    -- Percent of screen to increment by when resizing panes
-    delta   = 3/100
 
 -- Specific window rules
 myManageHook = composeAll
@@ -62,7 +47,8 @@ myManageHook = composeAll
 
 
 -- Main
-main = xmonad $ defaultConfig
+main = do
+    xmonad $ defaultConfig
         { focusedBorderColor = myFocusedBorderColor
         , layoutHook        = myLayoutHook
         , manageHook        = myManageHook
