@@ -41,10 +41,11 @@ alias e="echo"
 
 alias du="du -hs * 2> /dev/zero  | sort -h"
 
-alias gs="git status"
 alias ga="git add"
-alias gl="git log"
 alias gg="git grep"
+alias gl="git log"
+alias gpr="git pull --rebase"
+alias gs="git status"
 
 alias cscope="cscope -d -f $CSCOPE_DB"
 
