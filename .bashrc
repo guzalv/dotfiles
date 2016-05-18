@@ -84,6 +84,13 @@ function gitd
     rm -f "${git_location_file}"
 }
 
+function mkcd
+{
+    local new_dir="${1}"
+    mkdir "${new_dir}"
+    cd "${new_dir}"
+}
+
 function ssht
 {
     test -n "$1" && ssh -t "$1" "bash -l"
