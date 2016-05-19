@@ -54,7 +54,7 @@ alias matlabcli="matlab -nodisplay -nojvm"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"' # Usage: sleep 10; alert
 
 # Cosmetics
-export PS1='\u@\h[\A]\[\e[1;95m\]$(parse_git_branch)\[\e[0m\] ${PWD#${PWD%/*/*}/} \$ '
+export PS1='\u@$(human_hostname)[\A]\[\e[1;95m\]$(parse_git_branch)\[\e[0m\] ${PWD#${PWD%/*/*}/} \$ '
 
 # Functions
 function parse_git_branch
@@ -83,6 +83,21 @@ function gitd
     echo "gitdir: ${HOME}/dotfiles/.git" > "${git_location_file}"
     git "${@}"
     rm -f "${git_location_file}"
+}
+
+function human_hostname
+{
+    if type human_hostname_work &> /dev/zero; then
+        hostname=$(human_hostname_work)
+    else
+        hostname=$(hostname)
+    fi
+
+    case "${hostname}" in
+        *)
+            echo "${hostname}"
+            ;;
+    esac
 }
 
 function mkcd
