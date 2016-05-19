@@ -95,6 +95,9 @@ function human_hostname
     fi
 
     case "${hostname}" in
+        mb.local)
+            echo home
+            ;;
         *)
             echo "${hostname}"
             ;;
