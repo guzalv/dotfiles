@@ -1,6 +1,7 @@
-# If .bashrc.work exists, source it
-if [ -r ~/.bashrc.work_specific ]; then
-    source ~/.bashrc.work_specific
+# If .bashrc.work_specific exists, source it
+bashrc_location=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+if [ -r "${bashrc_location}"/.bashrc.work_specific ]; then
+    source "${bashrc_location}"/.bashrc.work_specific
 fi
 
 # Env variables
