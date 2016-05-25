@@ -5,7 +5,7 @@ if [ -r "${bashrc_location}"/.bashrc.work_specific ]; then
 fi
 
 # Env variables
-export CSCOPE_DB="~/Documents/repo/cscope/cscope.out"
+export CSCOPE_DB="${HOME}/Documents/cscope/cscope.out"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
