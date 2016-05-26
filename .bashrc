@@ -114,7 +114,7 @@ function human_hostname
 function mkcd
 {
     local new_dir="${1}"
-    mkdir "${new_dir}"
+    mkdir --parents "${new_dir}"
     cd "${new_dir}"
 }
 
