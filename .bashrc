@@ -44,6 +44,8 @@ alias e="echo"
 alias du="du -hs * 2> /dev/zero  | sort -h"
 
 alias ga="git add"
+alias gb="git branch"
+alias gd="git diff"
 alias gg="git grep"
 alias gl="git log"
 alias gpr="git pull --rebase"
