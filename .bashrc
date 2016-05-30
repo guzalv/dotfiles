@@ -69,6 +69,7 @@ ${PWD#${PWD%/*/*}/} \$ '
 # Functions
 function parse_git_branch
 {
+    # Idea by J. Judin (https://github.com/Barro)
     git branch --no-color 2>/dev/null | grep \* | sed "s/\* \(.*\)/ \1:/"
 }
 
