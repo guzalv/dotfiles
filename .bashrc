@@ -65,7 +65,7 @@ export PS1='\
 \[\e[33m\]$(human_hostname)\[\e[0m\] \
 [\A]\
 \[\e[1;95m\]$(parse_git_branch)\[\e[0m\] \
-${PWD#${PWD%/*/*}/} \$ '
+\[\e[34m\]${PWD#${PWD%/*/*}/}\[\e[0m\] \$ '
 
 # Functions
 function parse_git_branch
