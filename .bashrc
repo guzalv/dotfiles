@@ -4,9 +4,6 @@ if [ -r "${bashrc_location}"/.bashrc.work_specific ]; then
     source "${bashrc_location}"/.bashrc.work_specific
 fi
 
-# Env variables
-export CSCOPE_DB="${HOME}/Documents/cscope/cscope.out"
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -57,15 +54,6 @@ alias cscope="cscope -d -f $CSCOPE_DB"
 alias matlabcli="matlab -nodisplay -nojvm"
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"' # Usage: sleep 10; alert
-
-# Cosmetics
-export PS1='\
-\u\
-@\
-\[\e[33m\]$(human_hostname)\[\e[0m\] \
-[\A]\
-\[\e[1;95m\]$(parse_git_branch)\[\e[0m\] \
-\[\e[34m\]${PWD#${PWD%/*/*}/}\[\e[0m\] \$ '
 
 # Functions
 function parse_git_branch
@@ -141,6 +129,18 @@ function g
 {
     grep $@
 }
+
+# Cosmetics
+export PS1='\
+\u\
+@\
+\[\e[33m\]$(human_hostname)\[\e[0m\] \
+[\A]\
+\[\e[1;95m\]$(parse_git_branch)\[\e[0m\] \
+\[\e[34m\]${PWD#${PWD%/*/*}/}\[\e[0m\] \$ '
+
+# Env variables
+export CSCOPE_DB="${HOME}/Documents/cscope/cscope.out"
 
 # Misc settings from Ubuntu default .bashrc
 HISTCONTROL=ignoreboth
