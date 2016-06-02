@@ -16,7 +16,7 @@ alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 
 alias ls="ls --color -F"
-alias ll="ls -alF"
+alias ll="ls -ahlF"
 alias la="ls -A"
 alias lltr="ls -ltr"
 alias l="ls -CFl"
