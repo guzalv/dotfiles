@@ -34,8 +34,8 @@ myManageHook = composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "Thunderbird"    --> doShift "1"
+    , stringProperty "WM_NAME" =? "mixer"                           --> doFloat
     , stringProperty "WM_NAME" =? "TTCN-3 Test Executor"            --> doFloat
-    , stringProperty "WM_NAME" =? "Select Config (MMGW) - LMF"      --> doFloat
     , stringProperty "WM_NAME" =? "TTCN-3 Log Monitor"              --> doFloat
     , stringProperty "WM_NAME" =? "Buddy List"                      --> doFloat
 -- Thesis
