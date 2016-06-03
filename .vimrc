@@ -17,6 +17,9 @@ au BufEnter * match ExtraWhitespace /\s\+$\|\t/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$\|\t/
 au InsertLeave * match ExtraWhiteSpace /\s\+$\|\t/
 
+" Highlight search results
+set hlsearch
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
