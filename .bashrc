@@ -24,11 +24,7 @@ alias cd-="cd -"
 
 alias p8="ping 8.8.8.8"
 
-if [ $(uname) = "Darwin" ]; then
-    alias rm="rm -i"
-else
-    alias rm="rm -I"
-fi
+alias rm="rm -I"
 
 alias mv="mv -i"
 alias cp="cp -i"
@@ -54,6 +50,12 @@ alias cscope="cscope -d -f $CSCOPE_DB"
 alias matlabcli="matlab -nodisplay -nojvm"
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"' # Usage: sleep 10; alert
+
+# OSX-specific
+if [ $(uname) = "Darwin" ]; then
+    alias ls="ls -G"
+    alias rm="rm -i"
+fi
 
 # Functions
 function parse_git_branch
