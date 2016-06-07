@@ -17,6 +17,9 @@ au BufEnter * match ExtraWhitespace /\s\+$\|\t/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$\|\t/
 au InsertLeave * match ExtraWhiteSpace /\s\+$\|\t/
 
+" Search for visually-selected text with //
+vnoremap // y/<C-R>"<CR>
+
 " Highlight search results
 set hlsearch
 
