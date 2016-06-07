@@ -46,6 +46,8 @@ alias gl="git log"
 alias gpr="git pull --rebase"
 alias gs="git status"
 
+alias kb="setxkbmap"
+
 alias cscope="cscope -d -f $CSCOPE_DB"
 
 alias matlabcli="matlab -nodisplay -nojvm"
