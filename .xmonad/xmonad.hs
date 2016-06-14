@@ -7,7 +7,6 @@ import XMonad.Layout.Reflect
 import XMonad.Layout.MouseResizableTile
 import qualified Data.Map as M
 
-
 -- Borders
 myNormalBorderColor  = "#115511"
 myFocusedBorderColor = "#00ff00"
@@ -15,8 +14,10 @@ myFocusedBorderColor = "#00ff00"
 -- Keys
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
     [ ((modm, xK_Up ), sendMessage ShrinkSlave)
-        , ((modm, xK_Down ), sendMessage ExpandSlave)
-        , ((modm .|. controlMask, xK_l ), spawn "gnome-screensaver-command --lock")
+      , ((modm, xK_Down ), sendMessage ExpandSlave)
+      , ((modm .|. controlMask, xK_l ), spawn "gnome-screensaver-command --lock")
+      , ((shiftMask, 0xff61 ), spawn "sleep 0.2; scrot -s '%H_%M_%S__%d_%m_%y.png' -e 'mv $f ~/screenshots'")
+
     ]
 
 -- Layout
