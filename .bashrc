@@ -58,8 +58,13 @@ function parse_git_branch
 
 function close
 {
-    # Very aggressive, does the trick in extreme cases
-    for PID in `pgrep "${1%.*}"`; do kill -n 9 ${PID} &> /dev/null & done
+    # First, be nice
+    for PID in `pgrep "${1%.*}"`; do kill -SIGINT ${PID} &> /dev/null & done
+
+    sleep 2
+
+    # Then, be aggressive
+    for PID in `pgrep "${1%.*}"`; do kill -SIGKILL ${PID} &> /dev/null & done
 }
 
 function gitd
