@@ -40,6 +40,7 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "Thunderbird"    --> doShift "1"
     , stringProperty "WM_NAME" =? "gist"                            --> doFloat
+    , stringProperty "WM_NAME" =? "notes"                           --> doFloat
     , stringProperty "WM_NAME" =? "mixer"                           --> doFloat
     , stringProperty "WM_NAME" =? "TTCN-3 Test Executor"            --> doFloat
     , stringProperty "WM_NAME" =? "TTCN-3 Log Monitor"              --> doFloat
