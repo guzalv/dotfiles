@@ -1,3 +1,14 @@
+# Aliases
+# Many common Linux commands / utilities behave differently in macOS. If GNU
+# coreutils have been installed (assuming Homebrew has been used, in which case
+# the commands have the same name with a leading "g") use them, otherwise adapt
+# them to be macOS-compatible.
+if hash gsort 2> /dev/zero; then
+    alias du="du -hs * 2> /dev/zero | gsort -h"
+else
+    alias du="du -hs * 2> /dev/zero"
+fi
+
 # Fix locale issues when SSH-ing to Ubuntu machines
 export LANG="en_US.utf8"
 export LANGUAGE="en_US.utf8"
