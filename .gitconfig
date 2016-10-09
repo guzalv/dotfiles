@@ -1,9 +1,9 @@
 [core]
-	editor = vim
+    editor = vim
 [push]
-	default = simple
+    default = simple
 [alias]
-	ci = commit
-	co = checkout
+    ci = commit
+    co = checkout
     br = branch
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
