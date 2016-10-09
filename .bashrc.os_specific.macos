@@ -9,6 +9,9 @@ else
     alias du="du -hs * 2> /dev/zero"
 fi
 
+alias ls="ls -G"
+alias rm="rm -i"
+
 # Fix locale issues when SSH-ing to Ubuntu machines
 export LANG="en_US.utf8"
 export LANGUAGE="en_US.utf8"

@@ -48,12 +48,6 @@ alias p8="ping 8.8.8.8"
 alias rm="rm -I"
 alias v="vim"
 
-# OSX-specific
-if [ $(uname) = "Darwin" ]; then
-    alias ls="ls -G"
-    alias rm="rm -i"
-fi
-
 # Functions
 function parse_git_branch
 {
