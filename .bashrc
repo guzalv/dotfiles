@@ -4,12 +4,6 @@ if [ -r "${bashrc_location}"/.bashrc.work_specific ]; then
     source "${bashrc_location}"/.bashrc.work_specific
 fi
 
-# If .bashrc.os_specific.macos exists and we are on a Mac, source it
-if [ -r "${bashrc_location}"/.bashrc.os_specific.macos ] && \
-    [ "$(uname)" = "Darwin"  ]; then
-    source "${bashrc_location}"/.bashrc.os_specific.macos
-fi
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -162,3 +156,9 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# If .bashrc.os_specific.macos exists and we are on a Mac, source it
+if [ -r "${bashrc_location}"/.bashrc.os_specific.macos ] && \
+    [ "$(uname)" = "Darwin"  ]; then
+    source "${bashrc_location}"/.bashrc.os_specific.macos
+fi
