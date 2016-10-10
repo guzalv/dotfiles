@@ -3,7 +3,8 @@
 [push]
     default = simple
 [alias]
-    ci = commit
-    co = checkout
-    br = branch
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    ci      = commit
+    cia     = commit --amend
+    co      = checkout
+    br      = branch
+    hist    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
