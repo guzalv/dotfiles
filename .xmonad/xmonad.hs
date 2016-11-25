@@ -18,7 +18,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
       , ((modm .|. controlMask, xK_Page_Up), spawn "set_volume up")
       , ((modm .|. controlMask, xK_Page_Down), spawn "set_volume down")
       , ((modm .|. controlMask, xK_End), spawn "set_volume toggle")
-      , ((modm .|. shiftMask, xK_b), spawn "gnome-terminal --window-with-profile=bg")
       , ((modm .|. controlMask, xK_l), spawn "gnome-screensaver-command --lock")
       , ((shiftMask, 0xff61), spawn "sleep 0.2; scrot -s '%H_%M_%S__%d_%m_%y.png' -e 'mv $f ~/screenshots'")
 
