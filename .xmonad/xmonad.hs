@@ -8,8 +8,8 @@ import XMonad.Layout.MouseResizableTile
 import qualified Data.Map as M
 
 -- Borders
-myNormalBorderColor  = "#115511"
-myFocusedBorderColor = "#00ff00"
+myNormalBorderColor  = "#777777"
+myFocusedBorderColor = "#ffffff"
 
 -- Keys
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
