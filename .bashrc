@@ -47,6 +47,7 @@ alias mv="mv -i"
 alias p8="ping 8.8.8.8"
 alias rm="rm -I"
 alias v="vim"
+alias :q="exit"
 
 # Functions
 function parse_git_branch
