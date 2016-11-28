@@ -5,6 +5,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
 import XMonad.Layout.Reflect
 import XMonad.Layout.MouseResizableTile
+import XMonad.Util.EZConfig(additionalKeys)
 import qualified Data.Map as M
 
 -- Borders
@@ -12,15 +13,15 @@ myNormalBorderColor  = "#777777"
 myFocusedBorderColor = "#ffffff"
 
 -- Keys
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
-    [ ((modm, xK_Up), sendMessage ShrinkSlave)
-      , ((modm, xK_Down), sendMessage ExpandSlave)
-      , ((modm .|. controlMask, xK_Page_Up), spawn "set_volume up")
-      , ((modm .|. controlMask, xK_Page_Down), spawn "set_volume down")
-      , ((modm .|. controlMask, xK_End), spawn "set_volume toggle")
-      , ((modm .|. controlMask, xK_l), spawn "gnome-screensaver-command --lock")
-      , ((shiftMask, 0xff61), spawn "sleep 0.2; scrot -s '%H_%M_%S__%d_%m_%y.png' -e 'mv $f ~/screenshots'")
-
+myModMask = mod1Mask
+myKeys =
+    [ ((myModMask, xK_Up), sendMessage ShrinkSlave)
+    , ((myModMask, xK_Down), sendMessage ExpandSlave)
+    , ((myModMask .|. controlMask, xK_Page_Up), spawn "set_volume up")
+    , ((myModMask .|. controlMask, xK_Page_Down), spawn "set_volume down")
+    , ((myModMask .|. controlMask, xK_End), spawn "set_volume toggle")
+    , ((myModMask .|. controlMask, xK_l), spawn "gnome-screensaver-command --lock")
+    , ((shiftMask, 0xff61), spawn "sleep 0.2; scrot -s '%H_%M_%S__%d_%m_%y.png' -e 'mv $f ~/screenshots'")
     ]
 
 -- Layout
@@ -58,5 +59,5 @@ main = do
         { focusedBorderColor = myFocusedBorderColor
         , layoutHook        = myLayoutHook
         , manageHook        = myManageHook
-        , keys = myKeys <+> keys defaultConfig
-        , normalBorderColor  = myNormalBorderColor }
+        , modMask           = myModMask
+        , normalBorderColor  = myNormalBorderColor } `additionalKeys` myKeys
