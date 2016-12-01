@@ -6,6 +6,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
 import XMonad.Layout.Reflect
+import XMonad.Layout.ThreeColumns
 import XMonad.Layout.MouseResizableTile
 import XMonad.StackSet hiding (workspaces)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -42,6 +43,7 @@ myLayoutHook = smartBorders $ mouseResizableTile { draggerType = BordersDragger 
                               ||| mouseResizableTile { isMirrored = True,
                                                        draggerType = BordersDragger }
                               ||| Grid
+                              ||| ThreeCol 1 (3/100) (1/3)
                               ||| noBorders Full
 
 -- Specific window rules
