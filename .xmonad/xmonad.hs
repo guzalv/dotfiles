@@ -29,6 +29,8 @@ myKeys =
     , ((myModMask .|. controlMask, xK_End),         spawn "set_volume toggle")
     , ((myModMask .|. controlMask, xK_l),
         spawn "gnome-screensaver-command --lock")
+    , ((myModMask .|. shiftMask, xK_s),
+        spawn "gnome-terminal --window-with-profile=smaller")
     , ((shiftMask, 0xff61),
         spawn "sleep 0.2; scrot -s '%H_%M_%S__%d_%m_%y.png' -e 'mv $f ~/screenshots'")
     ]
