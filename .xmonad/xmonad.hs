@@ -27,8 +27,7 @@ myKeys =
     , ((myModMask .|. controlMask, xK_Page_Up),     spawn "set_volume up")
     , ((myModMask .|. controlMask, xK_Page_Down),   spawn "set_volume down")
     , ((myModMask .|. controlMask, xK_End),         spawn "set_volume toggle")
-    , ((myModMask .|. controlMask, xK_l),
-        spawn "gnome-screensaver-command --lock")
+    , ((myModMask .|. controlMask, xK_l),           spawn "lock_screen")
     , ((myModMask .|. shiftMask, xK_s),
         spawn "gnome-terminal --window-with-profile=smaller")
     , ((shiftMask, 0xff61),
