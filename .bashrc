@@ -50,6 +50,7 @@ alias p8="ping 8.8.8.8"
 alias rm="rm -I"
 alias v="vim"
 alias :q="exit"
+alias :e="vim"
 
 # If .bashrc.os_specific.macos exists and we are on a Mac, source it
 if [ -r "${bashrc_location}"/.bashrc.os_specific.macos ] && \
