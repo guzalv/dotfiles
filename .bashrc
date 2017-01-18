@@ -51,6 +51,12 @@ alias rm="rm -I"
 alias v="vim"
 alias :q="exit"
 
+# If .bashrc.os_specific.macos exists and we are on a Mac, source it
+if [ -r "${bashrc_location}"/.bashrc.os_specific.macos ] && \
+    [ "$(uname)" = "Darwin"  ]; then
+    source "${bashrc_location}"/.bashrc.os_specific.macos
+fi
+
 # Functions
 function parse_git_branch
 {
@@ -164,8 +170,4 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# If .bashrc.os_specific.macos exists and we are on a Mac, source it
-if [ -r "${bashrc_location}"/.bashrc.os_specific.macos ] && \
-    [ "$(uname)" = "Darwin"  ]; then
-    source "${bashrc_location}"/.bashrc.os_specific.macos
-fi
+
