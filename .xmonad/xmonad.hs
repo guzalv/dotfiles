@@ -49,22 +49,14 @@ myLayoutHook = smartBorders $ mouseResizableTile { draggerType = BordersDragger 
 
 -- Specific window rules
 myManageHook = composeAll
-    [ isDialog                                              --> doFloat
-    , className =? "MPlayer"                                --> doFloat
-    , className =? "Gimp"                                   --> doFloat
-    , resource  =? "desktop_window"                         --> doIgnore
-    , resource  =? "kdesktop"                               --> doIgnore
-    , className =? "Thunderbird"                            --> doShift "1"
-    , stringProperty "WM_NAME" =? "gist"                    --> doFloat
-    , stringProperty "WM_NAME" =? "notes"                   --> doFloat
-    , stringProperty "WM_NAME" =? "mixer"                   --> doFloat
-    , stringProperty "WM_NAME" =? "TTCN-3 Test Executor"    --> doFloat
-    , stringProperty "WM_NAME" =? "TTCN-3 Log Monitor"      --> doFloat
-    , stringProperty "WM_NAME" =? "Buddy List"              --> doFloat
--- Thesis
-    , stringProperty "WM_NAME" =? "Plot area"               --> doFloat
-    , stringProperty "WM_NAME" =? "Data table"              --> doFloat
-    , stringProperty "WM_NAME" =? "Data selection"          --> doFloat
+    [ isDialog                                                      --> doFloat
+    , stringProperty "WM_NAME" =? "Inbox - Mozilla Thunderbird"     --> doShift "0"
+    , stringProperty "WM_NAME" =? "gist"                            --> doFloat
+    , stringProperty "WM_NAME" =? "notes"                           --> doFloat
+    , stringProperty "WM_NAME" =? "mixer"                           --> doFloat
+    , stringProperty "WM_NAME" =? "TTCN-3 Test Executor"            --> doFloat
+    , stringProperty "WM_NAME" =? "TTCN-3 Log Monitor"              --> doFloat
+    , stringProperty "WM_NAME" =? "Buddy List"                      --> doFloat
     , manageDocks <+> manageHook defaultConfig
     ]
 
