@@ -22,6 +22,7 @@ vnoremap // y/<C-R>"<CR>
 
 " Highlight search results
 set hlsearch
+highlight Search ctermbg=Red ctermfg=Yellow
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
