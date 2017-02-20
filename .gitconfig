@@ -3,10 +3,10 @@
 [push]
     default = simple
 [alias]
+    br      = branch
     ci      = commit
     cia     = commit --amend
     co      = checkout
     cp      = cherry-pick
-    br      = branch
     hist    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     pr      = pull --rebase
