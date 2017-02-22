@@ -24,6 +24,9 @@ vnoremap // y/<C-R>"<CR>
 set hlsearch
 highlight Search ctermbg=Red ctermfg=Yellow
 
+" Set colorscheme
+colorscheme peachpuff
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
