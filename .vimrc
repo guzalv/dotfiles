@@ -47,6 +47,15 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 15, 4)<CR>
 " Faster updates, for vim-gitgutter
 set updatetime=250
 
+" Tab-related shortcuts
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap te  :tabedit<Space>
+nnoremap tx  :tabclose<CR>
+
 " Save and load view automatically (folding...). Uncomment only if needed
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
