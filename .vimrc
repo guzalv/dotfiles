@@ -56,6 +56,18 @@ nnoremap tt  :tabedit<Space>
 nnoremap te  :tabedit<Space>
 nnoremap tx  :tabclose<CR>
 
+" vim-plug plugin manager
+call plug#begin('~/.vim/plugged')
+
+Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'nvie/vim-togglemouse'
+Plug 'airblade/vim-gitgutter'
+
+" Initialize plugin system
+call plug#end()
+
 " Save and load view automatically (folding...). Uncomment only if needed
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
