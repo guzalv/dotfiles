@@ -64,6 +64,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'nvie/vim-togglemouse'
 Plug 'airblade/vim-gitgutter'
+Plug 'pearofducks/ansible-vim'
 
 " Initialize plugin system
 call plug#end()
