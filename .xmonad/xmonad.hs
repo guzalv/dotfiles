@@ -13,7 +13,7 @@ import XMonad.Util.EZConfig(additionalKeys)
 import qualified Data.Map as M
 
 -- Workspaces
-myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
+myWorkspaces = ["0","1","2","3","4","5","6","7","8","9"]
 
 -- Borders
 myNormalBorderColor  = "#777777"
@@ -36,7 +36,7 @@ myKeys =
     -- Switch to additional workspaces (other than 1-9, which is the default)
     ++
     [((m .|. myModMask, k), windows $ f i)
-    | (i, k) <- zip myWorkspaces [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
+    | (i, k) <- zip myWorkspaces [xK_0, xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9]
     , (f, m) <- [(greedyView, 0), (shift, shiftMask)]]
 
 -- Layout
