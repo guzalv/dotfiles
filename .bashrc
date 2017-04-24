@@ -160,6 +160,7 @@ export PS1='\
 
 # Env variables
 export CSCOPE_DB="${HOME}/Documents/cscope/cscope.out"
+export EDITOR=vi
 
 # Misc settings from Ubuntu default .bashrc
 HISTCONTROL=ignoreboth
