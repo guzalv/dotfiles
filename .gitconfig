@@ -9,4 +9,9 @@
     co      = checkout
     cp      = cherry-pick
     hist    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    rb      = rebase
+    rbi     = rebase --interactive
     pr      = pull --rebase
+[user]
+	email = guzman.alvarez@ericsson.com
+	name = Guzman Alvarez
