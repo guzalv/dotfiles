@@ -40,9 +40,7 @@ myLayoutHook = smartBorders $ mouseResizableTile { draggerType = BordersDragger 
 
 -- Specific window rules
 myManageHook = composeAll
-    [ isDialog                                                      --> doFloat
-    , stringProperty "WM_NAME" =? "Appointments"                    --> doFloat
-    , stringProperty "WM_NAME" =? "gist"                            --> doFloat
+    [ stringProperty "WM_NAME" =? "gist"                            --> doFloat
     , stringProperty "WM_NAME" =? "notes"                           --> doFloat
     , stringProperty "WM_NAME" =? "mixer"                           --> doFloat
     , stringProperty "WM_NAME" =? "TTCN-3 Test Executor"            --> doFloat
@@ -50,7 +48,6 @@ myManageHook = composeAll
     , stringProperty "WM_NAME" =? "Buddy List"                      --> doFloat
     , manageDocks <+> manageHook defaultConfig
     ]
-
 
 -- Main
 main = do
