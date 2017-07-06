@@ -161,7 +161,6 @@ export PS1='\
 \[\e[1;34m\]${PWD#${PWD%/*/*}/}\[\e[0m\] \$ '
 
 # Env variables
-export CSCOPE_DB="${HOME}/Documents/cscope/cscope.out"
 export EDITOR=vi
 
 # Misc settings from Ubuntu default .bashrc
