@@ -56,6 +56,12 @@ nnoremap tt  :tabedit<Space>
 nnoremap te  :tabedit<Space>
 nnoremap tx  :tabclose<CR>
 
+" Ctags-related stuff
+" Search tags file
+" https://stackoverflow.com/questions/16636173/how-can-i-run-ctags-in-a-large-code-base
+set tags=./tags;/,tags;/
+nnoremap <silent> <F8> :TlistToggle<CR>
+
 " vim-plug plugin manager
 call plug#begin('~/.vim/plugged')
 
@@ -65,6 +71,7 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'nvie/vim-togglemouse'
 Plug 'airblade/vim-gitgutter'
 Plug 'pearofducks/ansible-vim'
+Plug 'vim-scripts/taglist.vim'
 
 " Initialize plugin system
 call plug#end()
