@@ -66,6 +66,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 call plug#begin('~/.vim/plugged')
 
 Plug 'steffanc/cscopemaps.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
