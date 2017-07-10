@@ -65,16 +65,16 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " vim-plug plugin manager
 call plug#begin('~/.vim/plugged')
 
+Plug 'pearofducks/ansible-vim'
 Plug 'steffanc/cscopemaps.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mfukar/robotframework-vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'nvie/vim-togglemouse'
-Plug 'airblade/vim-gitgutter'
-Plug 'pearofducks/ansible-vim'
-Plug 'vim-scripts/taglist.vim'
 
 " Initialize plugin system
 call plug#end()
