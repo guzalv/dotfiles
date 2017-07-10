@@ -67,6 +67,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'steffanc/cscopemaps.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mfukar/robotframework-vim'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
