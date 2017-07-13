@@ -42,24 +42,6 @@ function git_rm_deleted
     git status | grep "deleted:" | cut -d ":" -f 2 | xargs -n 1 git rm
 }
 
-function custom_hostname
-{
-    if type custom_hostname_work &> /dev/zero; then
-        hostname=$(custom_hostname_work)
-    else
-        hostname=$(hostname)
-    fi
-
-    case "${hostname}" in
-        mb.local)
-            echo home
-            ;;
-        *)
-            echo "${hostname}"
-            ;;
-    esac
-}
-
 function mkcd
 {
     local new_dir="${1}"
