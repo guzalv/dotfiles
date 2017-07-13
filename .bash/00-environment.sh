@@ -9,5 +9,25 @@ HISTFILESIZE=20000
 shopt -s histappend
 shopt -s checkwinsize
 
+# Less stuff (taken from https://github.com/nablaa/dotfiles/blob/master/.zsh/environment.zsh)
+# R - Raw color codes in output (don't remove color codes)
+# S - Don't wrap lines, just cut off too long text
+# M - Long prompts ("Line X of Y")
+# ~ - Don't show those weird ~ symbols on lines after EOF
+# g - Highlight results when searching with slash key (/)
+# I - Case insensitive search
+# s - Squeeze empty lines to one
+# w - Highlight first line after PgDn
+export LESS="-RSM~gIsw"
+
+# Less Colors for Man Pages
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[01;31m'       # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[01;32m' # begin underline
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
