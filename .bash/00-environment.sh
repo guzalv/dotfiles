@@ -31,3 +31,6 @@ export LESS_TERMCAP_us=$'\E[01;32m' # begin underline
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# More colors for "ls" command
+eval "$(dircolors -b)"
