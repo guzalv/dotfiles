@@ -42,10 +42,10 @@ function git_rm_deleted
     git status | grep "deleted:" | cut -d ":" -f 2 | xargs -n 1 git rm
 }
 
-function human_hostname
+function custom_hostname
 {
-    if type human_hostname_work &> /dev/zero; then
-        hostname=$(human_hostname_work)
+    if type custom_hostname_work &> /dev/zero; then
+        hostname=$(custom_hostname_work)
     else
         hostname=$(hostname)
     fi
