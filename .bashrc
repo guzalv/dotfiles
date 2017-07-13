@@ -1,8 +1,4 @@
-# If .bashrc.work_specific exists, source it
 bashrc_location=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-if [ -r "${bashrc_location}"/.bashrc.work_specific ]; then
-    source "${bashrc_location}"/.bashrc.work_specific
-fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
