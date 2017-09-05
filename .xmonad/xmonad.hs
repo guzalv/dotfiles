@@ -1,6 +1,7 @@
 -- Everythig here is copy-pasted from several sources, notably Miika's:
 -- https://github.com/nablaa/dotfiles/blob/master/.xmonad/xmonad.hs
 import XMonad
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
@@ -51,7 +52,7 @@ myManageHook = composeAll
 
 -- Main
 main = do
-    xmonad $ defaultConfig
+    xmonad $ ewmh defaultConfig
         { focusedBorderColor    = myFocusedBorderColor
         , layoutHook            = myLayoutHook
         , manageHook            = myManageHook
