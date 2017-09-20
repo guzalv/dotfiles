@@ -27,6 +27,9 @@ highlight Search ctermbg=Red ctermfg=Yellow
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
+" Open / close NERDTree
+map <C-e> :NERDTreeToggle<CR>
+
 " Toggle paste mode
 set pastetoggle=<F2>
 
@@ -65,6 +68,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'pearofducks/ansible-vim'
 Plug 'steffanc/cscopemaps.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'mfukar/robotframework-vim'
 Plug 'vim-scripts/taglist.vim'
 Plug 'airblade/vim-gitgutter'
