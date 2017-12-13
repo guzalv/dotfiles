@@ -68,6 +68,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'pearofducks/ansible-vim'
 Plug 'steffanc/cscopemaps.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'mfukar/robotframework-vim'
 Plug 'vim-scripts/taglist.vim'
