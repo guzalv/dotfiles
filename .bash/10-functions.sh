@@ -32,16 +32,6 @@ function gitd
     rm -f "${git_location_file}"
 }
 
-function git_add_modified
-{
-    git status | grep "modified:" | cut -d ":" -f 2 | xargs -n 1 git add
-}
-
-function git_rm_deleted
-{
-    git status | grep "deleted:" | cut -d ":" -f 2 | xargs -n 1 git rm
-}
-
 function mkcd
 {
     local new_dir="${1}"
