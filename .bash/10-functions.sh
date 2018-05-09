@@ -39,6 +39,14 @@ function mkcd
     cd "${new_dir}"
 }
 
+function sshn
+{
+    ssh \
+    -o UserKnownHostsFile=/dev/null \
+    -o StrictHostKeyChecking=no \
+    "$@"
+}
+
 function ssht
 {
     test -n "$1" && ssh -t "$1" "bash -l"
