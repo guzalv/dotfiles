@@ -61,3 +61,9 @@ function stress
         for i in $(seq 1 ${num_processes}); do yes>/dev/zero& done
     fi
 }
+
+function weather
+{
+    local args=${@:-}
+    curl "wttr.in/${args}"
+}
