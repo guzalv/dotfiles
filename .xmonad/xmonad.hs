@@ -13,8 +13,8 @@ import XMonad.Util.EZConfig(additionalKeys)
 import qualified Data.Map as M
 
 -- Borders
-myNormalBorderColor  = "#777777"
-myFocusedBorderColor = "#ffffff"
+myNormalBorderColor  = "#222266"
+myFocusedBorderColor = "#5555ff"
 
 -- Keys
 myModMask = mod1Mask
@@ -22,9 +22,14 @@ myKeys =
     [ ((myModMask, xK_Up),                          sendMessage ShrinkSlave)
     , ((myModMask, xK_Down),                        sendMessage ExpandSlave)
     , ((myModMask .|. controlMask, xK_Page_Up),     spawn "set_volume up")
+    , ((0, 0x1008ff13),                             spawn "set_volume up")
     , ((myModMask .|. controlMask, xK_Page_Down),   spawn "set_volume down")
+    , ((0, 0x1008ff11),                             spawn "set_volume down")
     , ((myModMask .|. controlMask, xK_End),         spawn "set_volume toggle")
+    , ((0, 0x1008ff12),                             spawn "set_volume toggle")
     , ((myModMask .|. controlMask, xK_l),           spawn "lock_screen")
+    , ((myModMask .|. shiftMask, xK_s),             spawn "systemctl suspend")
+    , ((0, 0x1008ff2f),                             spawn "systemctl suspend")
     , ((shiftMask, 0xff61),
         spawn "sleep 0.2; scrot -s '%H_%M_%S__%d_%m_%y.png' -e 'mv $f ~/screenshots'")
     ]
