@@ -12,6 +12,3 @@
     rb      = rebase
     rbi     = rebase --interactive
     pr      = pull --rebase
-[user]
-	email = guzman.alvarez@ericsson.com
-	name = Guzman Alvarez
