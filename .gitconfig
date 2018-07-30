@@ -9,6 +9,8 @@
     co      = checkout
     cp      = cherry-pick
     hist    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    lol     = log --abbrev-commit --decorate --graph --pretty=oneline
+    lola    = log --abbrev-commit --all --decorate --graph --pretty=oneline
+    pr      = pull --rebase
     rb      = rebase
     rbi     = rebase --interactive
-    pr      = pull --rebase
