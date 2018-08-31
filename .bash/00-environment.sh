@@ -34,3 +34,6 @@ export LESS_TERMCAP_us=$'\E[01;32m' # begin underline
 
 # More colors for "ls" command
 eval "$(dircolors -b)"
+
+# Sync history between terminals
+export PROMPT_COMMAND="${PROMPT_COMMAND:-:}; history -a; history -n"
