@@ -2,7 +2,7 @@
 EDITOR=vi
 
 # History settings
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups
 HISTSIZE=10000
 HISTFILESIZE=20000
 
