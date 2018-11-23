@@ -37,3 +37,6 @@ eval "$(dircolors -b)"
 
 # Sync history between terminals
 export PROMPT_COMMAND="${PROMPT_COMMAND:-:}; history -a; history -n"
+
+# Use Bash completion
+source /etc/bash_completion
