@@ -62,7 +62,7 @@ nnoremap tx  :tabclose<CR>
 set tags=./tags;/,tags;/
 nnoremap <silent> <F8> :TlistToggle<CR>
 
-" vim-plug plugin manager
+" vim-plug plugin manager, see https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
 Plug 'pearofducks/ansible-vim'
