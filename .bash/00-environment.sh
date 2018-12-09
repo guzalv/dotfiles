@@ -39,4 +39,8 @@ eval "$(dircolors -b)"
 export PROMPT_COMMAND="${PROMPT_COMMAND:-:}; history -a; history -n"
 
 # Use Bash completion
-source /etc/bash_completion
+if [ -r /etc/bash_completion ]; then
+    source /etc/bash_completion
+elif [ -r /usr/share/bash-completion/bash_completion ]; then
+    source /usr/share/bash-completion/bash_completion
+fi
