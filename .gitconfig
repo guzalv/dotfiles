@@ -16,3 +16,8 @@
     pr      = pull --rebase
     rb      = rebase
     rbi     = rebase --interactive
+[user]
+	name = Guzman
+	email = guzman@guzman.fi
+[color]
+	ui = auto
