@@ -69,6 +69,10 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+" Folding
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
 " vim-plug plugin manager, see https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
