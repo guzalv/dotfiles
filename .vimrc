@@ -84,6 +84,7 @@ Plug 'google/vim-maktaba'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'nvie/vim-togglemouse'
+Plug 'stephpy/vim-yaml'
 
 " Initialize plugin system
 call plug#end()
