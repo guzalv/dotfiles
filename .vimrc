@@ -66,8 +66,8 @@ set tags=./tags;/,tags;/
 nnoremap <silent> <F8> :TlistToggle<CR>
 
 " Yaml (https://dzone.com/articles/vim-settings-for-working-with-yaml-snippet)
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" Yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab foldmethod=indent
 
 " Folding
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
