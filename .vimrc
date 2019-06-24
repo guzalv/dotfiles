@@ -72,10 +72,14 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Folding
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
+autocmd BufEnter * normal zR
 
 " ctrlp settings
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_max_files = 100000
+
+" Conceal by default (used by vim-markdown)
+set conceallevel=2
 
 " vim-plug plugin manager, see https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
@@ -95,6 +99,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'airblade/vim-gitgutter'
 Plug 'google/vim-jsonnet'
 Plug 'google/vim-maktaba'
+Plug 'plasticboy/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
 Plug 'terryma/vim-smooth-scroll'
