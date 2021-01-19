@@ -44,3 +44,8 @@ if [ -r /etc/bash_completion ]; then
 elif [ -r /usr/share/bash-completion/bash_completion ]; then
     source /usr/share/bash-completion/bash_completion
 fi
+
+# set PATH so it includes user's private bin directories
+for directory in $(find ~/bin -type d -not -path "*.git*"); do
+    PATH="${directory}:${PATH}"
+done
