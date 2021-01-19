@@ -78,6 +78,21 @@ autocmd BufEnter * normal zR
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_max_files = 100000
 
+" codefmt settings
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer black
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
+  autocmd BufWritePre,FileWritePre * FormatCode
+augroup END
+
 " Conceal by default (used by vim-markdown)
 set conceallevel=2
 
@@ -93,6 +108,7 @@ Plug 'mfukar/robotframework-vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/taglist.vim'
 Plug 'bazelbuild/vim-bazel'
+Plug 'google/vim-codefmt'
 Plug 'tpope/vim-fugitive'
 Plug 'bazelbuild/vim-ft-bzl'
 Plug 'terryma/vim-expand-region'
