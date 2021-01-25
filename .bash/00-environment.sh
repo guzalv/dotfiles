@@ -49,3 +49,8 @@ fi
 for directory in $(find ~/bin -type d -not -path "*.git*"); do
     PATH="${directory}:${PATH}"
 done
+
+# And software installed in ~/.local/bin
+if [ -d ~/.local/bin ]; then
+    export PATH=~/.local/bin:${PATH}
+fi
