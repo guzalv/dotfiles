@@ -54,3 +54,9 @@ done
 if [ -d ~/.local/bin ]; then
     export PATH=~/.local/bin:${PATH}
 fi
+
+# And NPM programs
+if [ -d ~/.npm/node_modules/.bin ]; then
+    export PATH=~/.npm/node_modules/.bin:${PATH}
+fi
+
