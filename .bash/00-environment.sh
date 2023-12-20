@@ -57,6 +57,10 @@ if [ -d ~/.npm/node_modules/.bin ]; then
     export PATH=~/.npm/node_modules/.bin:${PATH}
 fi
 
+if [ -d /usr/local/go/bin ]; then
+    export PATH=/usr/local/go/bin:${PATH}
+fi
+
 # If we are on a Mac and coreutils are installed, add them to the PATH so that
 # they are used by default instead of the MacOS versions of the tools.
 COREUTILS_DIR=/usr/local/opt/coreutils/libexec/gnubin
