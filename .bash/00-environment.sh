@@ -77,3 +77,8 @@ if [ -d /opt/homebrew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+if [ -d "${HOME}/go" ]; then
+    export GOPATH=${HOME}/go # Change this if you choose to use a different workspace.
+    export PATH=${PATH}:${GOPATH}/bin
+fi
+
