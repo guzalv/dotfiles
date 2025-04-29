@@ -73,3 +73,7 @@ if command -v dircolors &> /dev/null; then
     eval "$(dircolors -b)"
 fi
 
+if [ -d /opt/homebrew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
