@@ -81,3 +81,9 @@ if [ -d "${HOME}/go" ]; then
     export GOPATH=${HOME}/go # Change this if you choose to use a different workspace.
     export PATH=${PATH}:${GOPATH}/bin
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/gualvare/sw/google-cloud-sdk/path.bash.inc' ]; then . '/Users/gualvare/sw/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/gualvare/sw/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/gualvare/sw/google-cloud-sdk/completion.bash.inc'; fi
