@@ -21,13 +21,13 @@ shopt -s checkwinsize
 export LESS="-RSM~gIsw"
 
 # Less Colors for Man Pages
-export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-export LESS_TERMCAP_me=$'\E[0m'           # end mode
-export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-export LESS_TERMCAP_so=$'\E[01;31m'       # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-export LESS_TERMCAP_us=$'\E[01;32m' # begin underline
+export LESS_TERMCAP_mb=$'\E[01;31m'      # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m' # begin bold
+export LESS_TERMCAP_me=$'\E[0m'          # end mode
+export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
+export LESS_TERMCAP_so=$'\E[01;31m'      # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'          # end underline
+export LESS_TERMCAP_us=$'\E[01;32m'      # begin underline
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -64,12 +64,12 @@ fi
 # If we are on a Mac and coreutils are installed, add them to the PATH so that
 # they are used by default instead of the MacOS versions of the tools.
 COREUTILS_DIR=/usr/local/opt/coreutils/libexec/gnubin
-if [ "$(uname)" = "Darwin"  ] && [ -d "${COREUTILS_DIR}" ]; then
+if [ "$(uname)" = "Darwin" ] && [ -d "${COREUTILS_DIR}" ]; then
     export PATH="${COREUTILS_DIR}:${PATH}"
 fi
 
 # More colors for "ls" command
-if command -v dircolors &> /dev/null; then
+if command -v dircolors &>/dev/null; then
     eval "$(dircolors -b)"
 fi
 
@@ -81,4 +81,3 @@ if [ -d "${HOME}/go" ]; then
     export GOPATH=${HOME}/go # Change this if you choose to use a different workspace.
     export PATH=${PATH}:${GOPATH}/bin
 fi
-
