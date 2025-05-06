@@ -90,6 +90,7 @@ augroup autoformat_settings
   autocmd FileType python AutoFormatBuffer black
   autocmd FileType rust AutoFormatBuffer rustfmt
   autocmd FileType vue AutoFormatBuffer prettier
+  autocmd FileType sh AutoFormatBuffer shfmt
   autocmd BufWritePre,FileWritePre * FormatCode
 augroup END
 
@@ -115,6 +116,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'airblade/vim-gitgutter'
 Plug 'google/vim-jsonnet'
 Plug 'google/vim-maktaba'
+Plug 'google/vim-glaive'
 Plug 'plasticboy/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
@@ -125,3 +127,25 @@ Plug 'stephpy/vim-yaml'
 
 " Initialize plugin system
 call plug#end()
+
+call glaive#Install()
+
+" Function to dynamically generate shfmt options
+" Includes --filename flag with the current buffer's full path
+function GetShfmtDynamicOptions() abort
+  " Get the full path of the current buffer
+  let l:filepath = expand('%:p')
+
+  " Check if the path is empty (e.g., unnamed buffer like [No Name])
+  if empty(l:filepath)
+    " If buffer has no name, return an empty list (no --filename needed/possible)
+    return []
+  else
+    " If buffer has a name, return the list with the required arguments
+    " Note: Each argument is a separate item in the list
+    return ['--filename', l:filepath]
+  endif
+endfunction
+
+"Glaive codefmt shfmt_options='GetShfmtDynamicOptions'
+
