@@ -1,8 +1,8 @@
 ## Critical guidelines
 - Don't guess, provide answers based on facts: research the code, or whatever you need to do.
 - If you can't find facts but have a hypothesis, make it crystal clear that it's just a hypothesis. Think and suggest ways to prove it. If possible do it yourself.
-- Don't generate code if a suitable program exists already, see [helpers](#reusable-helpers-system) below.
-- When you have to figure out something complex-ish, like what's the API path to get some data from some service, check first if there's a helper that explains it. See [helpers](#reusable-helpers-system) below.
+- Before generating code or researching something, query the AI library first: `~/ai/library/query.py "search terms"`. See [AI Library](#ai-library) below.
+- **Review vs fix:** When the user asks for a **review** (e.g. "review this", "review changes"), only review and report findings. Do **not** change code, apply fixes, or implement suggestions unless the user explicitly asks you to fix, implement, or apply changes.
 - Inform the user that you have read and understood the guidelines in this file.
 
 ## Tracking progress
@@ -52,6 +52,7 @@ Adding support for tailored compliance profiles in StackRox, allowing users to c
 - Significant progress: update status/next steps
 - Stopping work: note where you left off
 - Completing work: archive or delete the file
+- When user types "bye" indicating they will close the session
 
 
 ## AI Assistant Guidelines
@@ -74,100 +75,128 @@ When writing or modifying source code:
 
 When writing scripts:
 - Check first whether other scripts that achieve the same/similar goal exist
-- See "Reusable Helpers System" below
+- See [AI Library](#ai-library) below
 
 
-## Reusable Helpers System
+## AI Library
 
-Location: `~/ai/helpers/`
+Location: `~/ai/library/`
 
-Prevents re-inventing code and re-discovering procedures across sessions.
+Prevents re-inventing code and re-discovering knowledge across sessions.
 
-### Finding helpers
+### Structure
 
-**Before generating code or figuring something out, check for existing helpers:**
+```
+~/ai/library/
+├── helpers/           # Executable code (scripts)
+├── docs/              # Knowledge documentation
+├── helpers-index.json
+├── docs-index.json
+├── query.py           # Fuzzy search tool
+└── synonyms.json      # Search synonyms
+```
+
+### Querying the library
+
+**Before generating code or researching something:**
 
 ```bash
-cat ~/ai/helpers/index.json
+~/ai/library/query.py "search terms"
 ```
 
-The index is lean - only contains what you need for decision-making:
+Options:
+- `--helpers-only` - search only executable code
+- `--docs-only` - search only documentation
+
+Output is JSON with ranked results:
 ```json
-{"id": "git/parse-jira-from-branch", "summary": "Extracts JIRA issue ID from git branch name.", "tags": ["git", "jira"]}
+{
+  "results": [
+    {"source": "helpers", "id": "git/parse-jira", "summary": "...", "tags": [...], "score": 0.92, "path": "..."},
+    {"source": "docs", "id": "stackrox/sensor-comm", "summary": "...", "tags": [...], "score": 0.85, "path": "..."}
+  ]
+}
 ```
 
-- `id` doubles as the path (without extension)
-- Read each `summary` and `tags`, and think if any of those matches or could be adapted to match your needs.
-- If a helper matches: read the file at `~/ai/helpers/<id>.*`, use it
+- If a result matches: read the file at `path`, use it
 - If no match: proceed, then document your work (see below)
 
-### When to create a helper
+### When to add to the library
 
-Create a helper when you:
-- Write reusable code (not project-specific business logic)
-- Figure out a cumbersome multi-step process
-- Spend significant effort discovering how something works
+**Add a helper** when you write reusable code (not project-specific business logic).
 
-**Script vs procedure:**
-- **Script**: Automatable, deterministic steps
-- **Procedure** (`.md`): Requires judgment, GUI, or not worth automating
+**Add a doc** when you:
+- Research architecture or component relationships
+- Figure out non-obvious workflows or config locations
+- Discover integration patterns between systems
+- Discover a non-obvious operational procedure incidentally during a task (e.g. how to connect to a service, where credentials live, what a resource is actually named vs. what you'd expect) — save it as soon as it's confirmed working, don't wait to be asked
+
+**Heuristic**: if you had to try more than one thing to get something working, it's worth documenting.
+
+**Don't add**: current work progress (use `~/ai/current-work/`), tiny/obvious details, transient info.
 
 ### Creating a helper
 
-1. **Write the file** in `~/ai/helpers/<category>/<name>.<ext>`
-   - Use existing categories (`git/`, `k8s/`, `auth/`, `text/`, `misc/`) or create new ones
-   - Include metadata and usage in the file itself (see formats below)
-
-2. **Add to index.json** (only decision-relevant fields):
+1. Write file in `~/ai/library/helpers/<category>/<name>.<ext>`
+2. Add to `helpers-index.json`:
    ```json
    {"id": "category/name", "summary": "One sentence: what + when.", "tags": ["keywords"]}
    ```
 
-### Script format
-
+**Helper format:**
 ```bash
 #!/usr/bin/env bash
-# @type: script
 # @language: bash
 # @created: YYYY-MM-DD
 #
-# Short description of what this does.
+# Short description.
 #
 # USAGE: script-name.sh <required> [optional]
 # OUTPUT: What it prints/returns
 #
 # EXAMPLES:
 #   $ script-name.sh foo
-#   expected output
+#   output
 
 set -euo pipefail
 # implementation
 ```
 
-### Procedure format
+### Creating a doc
 
+1. Write file in `~/ai/library/docs/<category>/<name>.md`
+2. Add to `docs-index.json`:
+   ```json
+   {"id": "category/name", "summary": "One sentence: what this explains.", "tags": ["keywords"]}
+   ```
+
+**Doc format:**
 ```markdown
 ---
-type: procedure
 created: YYYY-MM-DD
+sources:
+  - path/to/code
+  - or URLs
 ---
 # Title
 
-## When to use
-Context for when this applies.
+## Overview
+Brief explanation.
 
-## Steps
-1. First step
-2. Second step
-
-## Automation potential
-Could this become a script? What's blocking it?
+## Details
+...
 ```
+
+### Categories
+
+Use existing or create new: `git/`, `k8s/`, `auth/`, `stackrox/`, `general/`, etc.
 
 ### Maintenance
 
-- Update files directly; the index only has id/summary/tags
-- Remove obsolete helpers from both index and filesystem
+- Update files directly; indexes only have id/summary/tags
+- Remove obsolete entries from both index and filesystem
+- Add new synonyms to `synonyms.json` when you notice missing mappings
+- When user types "bye" indicating they'll close the session, check if any content needs updating and do it
 
 
 ## Pull Request Guidelines
