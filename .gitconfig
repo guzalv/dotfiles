@@ -1,7 +1,7 @@
 [core]
     editor = vim
 [diff]
-    tool = vimdiff
+    external = difft
 [push]
     default = simple
 [alias]
@@ -10,6 +10,8 @@
     cia     = commit --amend
     co      = checkout
     cp      = cherry-pick
+    dl      = log -p --ext-diff
+    ds      = show --ext-diff
     hist    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     lol     = log --abbrev-commit --decorate --graph --pretty=oneline
     lola    = log --abbrev-commit --all --decorate --graph --pretty=oneline
@@ -17,7 +19,5 @@
     rb      = rebase
     rbi     = rebase --interactive
 [user]
-	name = Guzman
-	email = guzman@guzman.fi
-[color]
-	ui = auto
+    name = Guzman
+
