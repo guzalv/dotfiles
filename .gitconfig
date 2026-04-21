@@ -1,9 +1,3 @@
-[core]
-    editor = vim
-[diff]
-    external = difft
-[push]
-    default = simple
 [alias]
     br      = branch
     ci      = commit
@@ -18,6 +12,13 @@
     pr      = pull --rebase
     rb      = rebase
     rbi     = rebase --interactive
+[core]
+    editor = vim
+[diff]
+    external = difft
+[push]
+    default = simple
 [user]
     name = Guzman
+    email = guzman@guzman.fi
 
