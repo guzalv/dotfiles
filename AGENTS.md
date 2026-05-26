@@ -277,6 +277,8 @@ Use existing or create new: `git/`, `k8s/`, `auth/`, `stackrox/`, `general/`, et
 
 - Always create PRs as drafts first using the `--draft` flag with `gh pr create`
 - Mark as ready for review only when explicitly requested by the user
+- Do not hard-wrap lines at a fixed column width in PR descriptions — write each paragraph as a single line and let GitHub handle text wrapping in the rendered view
+- When editing PR descriptions, use `gh api repos/{owner}/{repo}/pulls/{number} -X PATCH -f body='...'` instead of `gh pr edit --body` to avoid the GraphQL "Projects (classic) is being deprecated" error
 
 
 ## Documentation instructions
