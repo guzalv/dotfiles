@@ -1,4 +1,5 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"' # Usage: sleep 10; alert
+alias alert='osascript -e "tell app \"iTerm\" to display dialog \"alert\""'
 alias c="cat"
 alias cd..="cd .."
 alias cd-="cd -"
@@ -33,6 +34,7 @@ alias grd="git status | grep deleted: | cut -d : -f 2 | xargs -n 1 git rm"
 alias gre="git rebase"
 alias grei="git rebase --interactive"
 alias gs="git status"
+alias gsp=/opt/homebrew/bin/gs
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -59,3 +61,5 @@ alias speedtest="wget -O /dev/null http://speedtest.tele2.net/10GB.zip"
 alias v="vim"
 alias :q="exit"
 alias :e="vim"
+
+complete -o default -F __start_kubectl k
