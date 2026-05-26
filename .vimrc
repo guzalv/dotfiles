@@ -97,10 +97,14 @@ augroup END
 " Conceal by default (used by vim-markdown)
 set conceallevel=2
 
+" Enable AutoSave on startup
+let g:auto_save = 1
+
 " vim-plug plugin manager, see https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
 Plug 'pearofducks/ansible-vim'
+Plug '907th/vim-auto-save'
 Plug 'steffanc/cscopemaps.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
@@ -147,5 +151,5 @@ function GetShfmtDynamicOptions() abort
   endif
 endfunction
 
-"Glaive codefmt shfmt_options='GetShfmtDynamicOptions'
+Glaive codefmt shfmt_options='GetShfmtDynamicOptions'
 
