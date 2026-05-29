@@ -62,6 +62,56 @@ Adding support for tailored compliance profiles in StackRox, allowing users to c
   - If not archiving, delete the file(s)
 - When user types "bye" indicating they will close the session
 
+### Future work
+
+Track ideas, follow-ups, and deferred tasks in `~/ai/future-work/<topic>.md`. These are things identified as worth doing but not actively being worked on right now.
+
+#### When to create a future-work item
+- The user explicitly asks to note something for later (e.g. "we should do X at some point", "remind me to look into Y", "add this as a follow-up")
+- While working on a feature, you or the user identify something that is out of scope but should be done later (e.g. a related refactor, a missing test, a tech debt item, an edge case to handle)
+- A review surfaces a suggestion that won't be addressed in the current PR
+
+When identifying follow-ups during active work, **proactively suggest** creating a future-work item — don't silently let it slip.
+
+#### Future-work file format
+
+Each `~/ai/future-work/<topic>.md` should contain:
+- **Summary**: What needs to be done and why (1-3 sentences)
+- **Origin**: How this was identified — link to the current-work topic, PR, or conversation where it came up
+- **Context**: Relevant code locations, files, or references needed to pick this up later
+- **Priority**: `low` / `medium` / `high` — rough sense of urgency
+- **Created**: Date the item was recorded
+
+-------------- Example future-work file starts --------------
+```markdown
+# Refactor compliance CSV export to streaming
+
+## Summary
+The current CSV export loads all results into memory before writing. For large clusters this could OOM. Should switch to a streaming writer.
+
+## Origin
+Identified while working on compliance-csv-control-ref-fix (ROX-29876). Not in scope for that PR.
+
+## Context
+- Code: ~/go/src/github.com/stackrox/stackrox/central/compliance/export/csv.go
+- Related PR: https://github.com/stackrox/stackrox/pull/12345
+
+## Priority
+medium
+
+## Created
+2026-05-29
+```
+-------------- Example future-work file ends --------------
+
+#### Lifecycle
+- When picking up a future-work item for active development, move it to `~/ai/current-work/` and expand it with the full current-work format (status, PRs, etc.)
+- Periodically (e.g. on startup when listing current work, or when the user asks), mention outstanding future-work items so nothing is forgotten
+- Delete items that are no longer relevant or have been completed as part of other work
+
+#### On startup
+After checking `~/ai/current-work/`, also check `~/ai/future-work/`. If items exist, briefly list them after the current-work summary so the user has visibility.
+
 
 ## AI Assistant Guidelines
 
@@ -287,4 +337,3 @@ When documenting progress/results:
 - Check first what files may have been used previously and prefer reusing those where possible, refactoring as needed.
 - Be concise and stick to facts, cite sources, data, code etc to back your claims.
 - Use consistent file names: check what's there first, and if you really need to create a new file follow the existing conventions regarding placement and naming.
-
