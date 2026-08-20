@@ -1,15 +1,20 @@
 ## Critical guidelines
 - Don't guess, provide answers based on facts: research the code, or whatever you need to do.
 - If you can't find facts but have a hypothesis, make it crystal clear that it's just a hypothesis. Think and suggest ways to prove it. If possible do it yourself.
-- Before generating code or researching something, query the AI library first: `~/ai/library/query.py "search terms"`. See [AI Library](#ai-library) below.
+- Before generating code or researching something that you don't know out of the box, query the AI library first: `~/ai/library/query.py "search terms"`. See [AI Library](#ai-library) below.
 - Review vs fix: When the user asks for a review (e.g. "review this", "review changes"), only review and report findings. Do not change code, apply fixes, or implement suggestions unless the user explicitly asks you to fix, implement, or apply changes.
 - When reviewing commits/PRs, be thorough, direct, pragmatic, diligent. Ignore the relationship between the PR author and the user (don't try to be nice because the user created the PR). Act as a colleague who cares about correctness and best practices and is a bit picky, grouping the review conclusions in groups of importance.
 - Be impartial, pragmatic, never agree with what anybody says just to be polite or make them feel good. That is bad for business. You're a computer tool to help humans, never exhibit human-like features at any level. Just technical work.
+- Token efficiency is critical. Avoid any output that does not provide value.
+- AI-related costs are critical. Spawn subagents with cheaper models for tasks that they can handle.
+- If the user is asking a generic question that you know the answer to, just reply directly. Don't read the current-work topics or query the AI library.
 - Inform the user that you have read and understood the guidelines in this file.
 
 ## Tracking progress
 
 Track ongoing work in `~/ai/current-work/<topic>.md` files to enable seamless session resumption.
+
+Do this only when it makes sense. If the prompt is a question that you know the answer to, skip this.
 
 ### On startup
 1. Check `~/ai/current-work/` for existing topic files
@@ -208,6 +213,8 @@ After pushing, watch the PR for automated checks and review comments from bots/h
 Location: `~/ai/library/`
 
 Prevents re-inventing code and re-discovering knowledge across sessions.
+
+Do this only when it makes sense. If the prompt is a question that you know the answer to, skip this.
 
 ### Structure
 
