@@ -25,7 +25,7 @@ Do this only when it makes sense. If the prompt is a question that you know the 
 Each `~/ai/current-work/<topic>.md` should contain:
 - **Summary**: Brief description of the work (1-2 sentences)
 - **Code locations**: Primary repos/directories where code changes happen
-- **PRs**: Full GitHub PR URLs (e.g. `https://github.com/owner/repo/pull/123`). **Always** add PR URLs here when creating or discovering PRs related to the work. This is critical — the AI PR Manager uses these URLs to monitor PRs.
+- **PRs**: Full GitHub PR URLs (e.g. `https://github.com/owner/repo/pull/123`). **Always** add PR URLs here when creating or discovering PRs related to the work. This is critical — external tooling parses these URLs.
 - **Supporting docs**: Directory for design docs, notes, related files (if any)
 - **Status**: Current state, next steps, blockers
 - **Last updated**: Date of last activity
