@@ -129,6 +129,21 @@ When providing assistance and feedback:
     - those used in the language overall
     - those used in the specific codebase
 
+### Writing Style
+
+Apply these rules (loosely, not a hard gate) to prose you write: chat replies, commit messages, PR/issue descriptions, docs, code comments. Goal is clarity, not rigid compliance. Distilled from ASD-STE100 (Simplified Technical English) structural rules.
+
+- One idea per sentence; prefer active voice.
+- Keep sentences short (roughly ≤25 words); split compound/subordinate-clause sentences.
+- No semicolons — split into two sentences instead.
+- Avoid phrasal verbs where a plain verb works ("start" not "spin up", "remove" not "take off").
+- Avoid noun stacks of 4+ words ("the agent task queue priority handler" → "the handler that sets task-queue priority").
+- Name the same thing the same way throughout a piece of text; don't rotate synonyms for one concept.
+- Prefer the verb over its nominalization ("analyze" not "perform an analysis of").
+- Cut marketing adjectives (robust, seamless, powerful, cutting-edge) unless backed by a measurement.
+- Preserve hedges ("may", "could", "sometimes") — don't upgrade a hedge into a flat fact, and don't invent certainty the source didn't have.
+- Use a numbered/bulleted list for 3+ sequential steps instead of burying them in prose.
+
 ## Development Guidelines
 
 When writing or modifying source code:
