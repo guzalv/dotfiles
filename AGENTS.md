@@ -1,7 +1,7 @@
 ## Critical guidelines
 - Don't guess, provide answers based on facts: research the code, or whatever you need to do.
 - If you can't find facts but have a hypothesis, make it crystal clear that it's just a hypothesis. Think and suggest ways to prove it. If possible do it yourself.
-- Before generating code or researching something that you don't know out of the box, query the AI library first: `~/ai/library/query.py "search terms"`. See [AI Library](#ai-library) below.
+- Before generating code or researching something that you don't know out of the box, query the AI library first: `~/ai/library/query.py "search terms"`. Full reference (when/how to add content): `~/.agents/ai-library.md`.
 - Review vs fix: When the user asks for a review (e.g. "review this", "review changes"), only review and report findings. Do not change code, apply fixes, or implement suggestions unless the user explicitly asks you to fix, implement, or apply changes.
 - When reviewing commits/PRs, be thorough, direct, pragmatic, diligent. Ignore the relationship between the PR author and the user (don't try to be nice because the user created the PR). Act as a colleague who cares about correctness and best practices and is a bit picky, grouping the review conclusions in groups of importance.
 - Be impartial, pragmatic, never agree with what anybody says just to be polite or make them feel good. That is bad for business. You're a computer tool to help humans, never exhibit human-like features at any level. Just technical work.
@@ -12,122 +12,18 @@
 
 ## Tracking progress
 
-Track ongoing work in `~/ai/current-work/<topic>.md` files to enable seamless session resumption.
+Track ongoing work in `~/ai/current-work/<topic>.md` files, and deferred follow-ups in `~/ai/future-work/<topic>.md`, to enable seamless session resumption. Do this only when it makes sense — skip it for questions you can just answer.
 
-Do this only when it makes sense. If the prompt is a question that you know the answer to, skip this.
+On startup: check `~/ai/current-work/` and `~/ai/future-work/`. If topics exist, confirm with the user (or list them if there are several) before resuming. Mention outstanding future-work items so nothing is forgotten.
 
-### On startup
-1. Check `~/ai/current-work/` for existing topic files
-2. If multiple topics exist, list them and ask the user what they want to work on
-3. If a single topic exists, confirm with the user before resuming
-
-### Topic file format
-Each `~/ai/current-work/<topic>.md` should contain:
-- **Summary**: Brief description of the work (1-2 sentences)
-- **Code locations**: Primary repos/directories where code changes happen
-- **PRs**: Full GitHub PR URLs (e.g. `https://github.com/owner/repo/pull/123`). **Always** add PR URLs here when creating or discovering PRs related to the work. This is critical — external tooling parses these URLs.
-- **Supporting docs**: Directory for design docs, notes, related files (if any)
-- **Status**: Current state, next steps, blockers
-- **Last updated**: Date of last activity
-
--------------- Example topic file starts --------------
-```markdown
-# Tailored Profiles (ROX-23456)
-
-## Summary
-Adding support for tailored compliance profiles in StackRox, allowing users to customize rules.
-
-## Code locations
-- Main: ~/go/src/github.com/stackrox/stackrox
-- Related: ~/sw/compliance-operator
-
-## PRs
-- https://github.com/stackrox/stackrox/pull/12345
-
-## Supporting docs
-~/work/ROX-23456-tailored-profiles/
-
-## Status
-- Completed: custom rules support in proto definitions
-- Next: implement API endpoints for tailored profiles
-- Blockers: none
-
-## Last updated
-2026-02-24
-```
--------------- Example topic file ends --------------
-
-
-### When to update
-- Starting work on a new topic: create the file
-- Significant progress: update status/next steps
-- Stopping work: note where you left off
-- Completing/cancelling work:
-  - If archiving, move the work item doc(s) to `~/ai/previous-work/` (do not keep archived items in `~/ai/current-work/`)
-  - Use a clear archived filename that includes topic and date (for example: `archived-<topic>-YYYY-MM-DD.md`)
-  - If not archiving, delete the file(s)
-- When user types "bye" indicating they will close the session
-
-### Future work
-
-Track ideas, follow-ups, and deferred tasks in `~/ai/future-work/<topic>.md`. These are things identified as worth doing but not actively being worked on right now.
-
-#### When to create a future-work item
-- The user explicitly asks to note something for later (e.g. "we should do X at some point", "remind me to look into Y", "add this as a follow-up")
-- While working on a feature, you or the user identify something that is out of scope but should be done later (e.g. a related refactor, a missing test, a tech debt item, an edge case to handle)
-- A review surfaces a suggestion that won't be addressed in the current PR
-
-When identifying follow-ups during active work, **proactively suggest** creating a future-work item — don't silently let it slip.
-
-#### Future-work file format
-
-Each `~/ai/future-work/<topic>.md` should contain:
-- **Summary**: What needs to be done and why (1-3 sentences)
-- **Origin**: How this was identified — link to the current-work topic, PR, or conversation where it came up
-- **Context**: Relevant code locations, files, or references needed to pick this up later
-- **Priority**: `low` / `medium` / `high` — rough sense of urgency
-- **Created**: Date the item was recorded
-
--------------- Example future-work file starts --------------
-```markdown
-# Refactor compliance CSV export to streaming
-
-## Summary
-The current CSV export loads all results into memory before writing. For large clusters this could OOM. Should switch to a streaming writer.
-
-## Origin
-Identified while working on compliance-csv-control-ref-fix (ROX-29876). Not in scope for that PR.
-
-## Context
-- Code: ~/go/src/github.com/stackrox/stackrox/central/compliance/export/csv.go
-- Related PR: https://github.com/stackrox/stackrox/pull/12345
-
-## Priority
-medium
-
-## Created
-2026-05-29
-```
--------------- Example future-work file ends --------------
-
-#### Lifecycle
-- When picking up a future-work item for active development, move it to `~/ai/current-work/` and expand it with the full current-work format (status, PRs, etc.)
-- Periodically (e.g. on startup when listing current work, or when the user asks), mention outstanding future-work items so nothing is forgotten
-- Delete items that are no longer relevant or have been completed as part of other work
-
-#### On startup
-After checking `~/ai/current-work/`, also check `~/ai/future-work/`. If items exist, briefly list them after the current-work summary so the user has visibility.
-
+Full file formats, examples, and lifecycle rules (when to create/update/archive, future-work promotion): `~/.agents/tracking-progress.md`. Read it before creating or updating any of these files.
 
 ## AI Assistant Guidelines
 
 When providing assistance and feedback:
-
 - Don't praise needlessly, be pragmatic, direct, critical.
 - Ask clarifying questions and question assumptions.
-- Follow best practices:
-    - those used in the language overall
-    - those used in the specific codebase
+- Follow best practices: those used in the language overall, and those used in the specific codebase.
 
 ### Writing Style
 
@@ -146,205 +42,11 @@ Apply these rules (loosely, not a hard gate) to prose you write: chat replies, c
 
 ## Development Guidelines
 
-When writing or modifying source code:
-- Always test it, including integration tests in real systems when possible (e.g. use the current Kubernetes cluster). Ask user if unsure.
-- Once successful, create a commit for each cohesive change. Add a concise and complete commit message.
-- If the development is part of a PR, update it.
-- **Always** record PR URLs in the corresponding `~/ai/current-work/<topic>.md` file under the `## PRs` section when creating a PR or discovering an existing one related to the work.
+When writing or modifying source code, test it (including integration tests against real systems when possible), commit each cohesive change with a concise message, and update the PR if one exists — always recording PR URLs in the `~/ai/current-work/<topic>.md` file.
 
+Before committing, if a pre-commit hook fails, fix it only if our changes caused it (check `git diff master HEAD`) — otherwise commit with `--no-verify`.
 
-When a pre-commit hook (e.g. linter) blocks a commit, first check whether the
-failure was caused by our changes:
-
-- Compare the failing lines against `git diff master HEAD` — if the issue
-  exists in the base branch and is not in lines we touched, it is pre-existing.
-- Pre-existing issues: do **not** fix them. Commit with `--no-verify` instead.
-- Issues introduced by our changes: fix them before committing.
-
-When writing scripts:
-- Check first whether other scripts that achieve the same/similar goal exist
-- See [AI Library](#ai-library) below
-
-Follow these steps (never skip unless unfeasible, let user know):
-
-### 1. Understand before acting
-
-Read the code you are about to change and its tests. Trace the call chain far enough to know what breaks if you get it wrong. Do not start implementation until you can explain the current behavior.
-
-### 2. Implement incrementally
-
-Make one logical change at a time. After each change, run the relevant unit tests before moving on. If a test fails, fix it before adding more changes. Do the same with E2E tests (see "Test against a real deployment"). Do not batch multiple unrelated changes into one step.
-
-### 3. Test against a real deployment
-
-Unit tests are necessary but not sufficient. Test the changes thoroughly by deploying the modified product to a cluster. If you can't access a cluster, request a kubeconfig reference from the user. Inform the user that you will replace the images running in the cluster.
-
-- Build the product:
-	- Use `make image` if possible
-	- Otherwise build with `GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build`, and use `crane mutate --append` to mutate an existing image (from the running cluster)
-- Push to quay.io or ttl.sh (this is open source software).
-- Deploy by patching the deployment image and waiting for rollout.
-- Exercise the changed code path through the API or UI and confirm the output is correct. Run any relevant E2E tests if applicable.
-- If the change affects migrator or DB schema, build and deploy migrator from the same source.
-
-### 4. Review with parallel agents
-
-After implementation and testing, review the changes using independent agents before shipping. This step also applies after receiving any review feedback (from bots, humans, or other tools) — re-run the review to verify fixes and catch anything new. You should have a skill/command for this.
-
-After the review finishes, back to step 1 to iterate on the fixes.
-
-### 5. Produce proof
-
-Before declaring a change complete, generate concrete evidence that it works. Proof must be attachable to a PR description — not committed to the repo.
-
-Examples of good proof:
-- Screenshot or rendered image of output (e.g., CSV rendered as a table image, UI screenshot).
-- Curl output showing the new API behavior.
-- Test run output showing pass/fail results.
-- Diff of before/after output.
-
-Use whatever tools are available (matplotlib, imagemagick, browser screenshots) to transform raw output into a visual that a reviewer can verify at a glance.
-
-
-### 6. Ship
-
-- Commit with a clear message explaining *why*, not *what*.
-- Rebase on latest main before pushing.
-- Create or update the PR description following the repo's PR template.
-- Attach proof to the PR description.
-- Do not force-push without confirming first.
-
-### 7. Address external review feedback
-
-After pushing, watch the PR for automated checks and review comments from bots/humans:
-- Read every comment.
-- Fix legitimate issues in code (back to step 1).
-- Reply to each comment on GitHub explaining what was changed or why you disagree.
-- Do not silently ignore comments.
-
-
-## AI Library
-
-Location: `~/ai/library/`
-
-Prevents re-inventing code and re-discovering knowledge across sessions.
-
-Do this only when it makes sense. If the prompt is a question that you know the answer to, skip this.
-
-### Structure
-
-```
-~/ai/library/
-├── helpers/           # Executable code (scripts)
-├── docs/              # Knowledge documentation
-├── helpers-index.json
-├── docs-index.json
-├── query.py           # Fuzzy search tool
-└── synonyms.json      # Search synonyms
-```
-
-### Querying the library
-
-**Before generating code or researching something:**
-
-```bash
-~/ai/library/query.py "search terms"
-```
-
-Options:
-- `--helpers-only` - search only executable code
-- `--docs-only` - search only documentation
-
-Output is JSON with ranked results:
-```json
-{
-  "results": [
-    {"source": "helpers", "id": "git/parse-jira", "summary": "...", "tags": [...], "score": 0.92, "path": "..."},
-    {"source": "docs", "id": "stackrox/sensor-comm", "summary": "...", "tags": [...], "score": 0.85, "path": "..."}
-  ]
-}
-```
-
-- If a result matches: read the file at `path`, use it
-- If no match: proceed, then document your work (see below)
-
-### When to add to the library
-
-**Add a helper** when you write reusable code (not project-specific business logic).
-
-**Add a doc** when you:
-- Research architecture or component relationships
-- Figure out non-obvious workflows or config locations
-- Discover integration patterns between systems
-- Discover a non-obvious operational procedure incidentally during a task (e.g. how to connect to a service, where credentials live, what a resource is actually named vs. what you'd expect) — save it as soon as it's confirmed working, don't wait to be asked
-
-**Heuristic**: if you had to try more than one thing to get something working, it's worth documenting.
-
-**Don't add**: current work progress (use `~/ai/current-work/`), tiny/obvious details, transient info.
-
-### Creating a helper
-
-1. Write file in `~/ai/library/helpers/<category>/<name>.<ext>`
-2. Add to `helpers-index.json`:
-   ```json
-   {"id": "category/name", "summary": "One sentence: what + when.", "tags": ["keywords"]}
-   ```
-
-**Helper format:**
-```bash
-#!/usr/bin/env bash
-# @language: bash
-# @created: YYYY-MM-DD
-#
-# Short description.
-#
-# USAGE: script-name.sh <required> [optional]
-# OUTPUT: What it prints/returns
-#
-# EXAMPLES:
-#   $ script-name.sh foo
-#   output
-
-set -euo pipefail
-# implementation
-```
-
-### Creating a doc
-
-1. Write file in `~/ai/library/docs/<category>/<name>.md`
-2. Add to `docs-index.json`:
-   ```json
-   {"id": "category/name", "summary": "One sentence: what this explains.", "tags": ["keywords"]}
-   ```
-
-**Doc format:**
-```markdown
----
-created: YYYY-MM-DD
-sources:
-  - path/to/code
-  - or URLs
----
-# Title
-
-## Overview
-Brief explanation.
-
-## Details
-...
-```
-
-### Categories
-
-Use existing or create new: `git/`, `k8s/`, `auth/`, `stackrox/`, `general/`, etc.
-
-### Maintenance
-
-- Update files directly; indexes only have id/summary/tags
-- Remove obsolete entries from both index and filesystem
-- Add new synonyms to `synonyms.json` when you notice missing mappings
-- When user types "bye" indicating they'll close the session, check if any content needs updating and do it
-
+The full workflow — understand before acting, implement incrementally, test against a real deployment, review with parallel agents, produce proof, ship (rebase, draft PR, proof attached), and address external review feedback — never skip a step unless unfeasible: `~/.agents/dev-workflow.md`. Read it before starting any non-trivial code change.
 
 ## Pull Request Guidelines
 
@@ -352,7 +54,6 @@ Use existing or create new: `git/`, `k8s/`, `auth/`, `stackrox/`, `general/`, et
 - Mark as ready for review only when explicitly requested by the user
 - Do not hard-wrap lines at a fixed column width in PR descriptions — write each paragraph as a single line and let GitHub handle text wrapping in the rendered view
 - When editing PR descriptions, use `gh api repos/{owner}/{repo}/pulls/{number} -X PATCH -f body='...'` instead of `gh pr edit --body` to avoid the GraphQL "Projects (classic) is being deprecated" error
-
 
 ## Documentation instructions
 
