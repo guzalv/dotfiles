@@ -27,7 +27,7 @@ When providing assistance and feedback:
 
 ### Writing Style
 
-Apply these rules (loosely, not a hard gate) to prose you write: chat replies, commit messages, PR/issue descriptions, docs, code comments. Goal is clarity, not rigid compliance. Distilled from ASD-STE100 (Simplified Technical English) structural rules.
+Apply these rules to all text you write (distilled from ASD-STE100 (Simplified Technical English) structural rules):
 
 - One idea per sentence; prefer active voice.
 - Keep sentences short (roughly ≤25 words); split compound/subordinate-clause sentences.
@@ -54,6 +54,7 @@ The full workflow — understand before acting, implement incrementally, test ag
 - Mark as ready for review only when explicitly requested by the user
 - Do not hard-wrap lines at a fixed column width in PR descriptions — write each paragraph as a single line and let GitHub handle text wrapping in the rendered view
 - When editing PR descriptions, use `gh api repos/{owner}/{repo}/pulls/{number} -X PATCH -f body='...'` instead of `gh pr edit --body` to avoid the GraphQL "Projects (classic) is being deprecated" error
+- When iterating on PRs, add new commits instead of amending and force-pushing a single commit.
 
 ## Documentation instructions
 
