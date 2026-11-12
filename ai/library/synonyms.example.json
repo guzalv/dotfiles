@@ -1,0 +1,16 @@
+{
+  "k8s": ["kubernetes", "kube"],
+  "auth": ["authentication", "credentials", "login"],
+  "cfg": ["config", "configuration"],
+  "env": ["environment", "environ"],
+  "repo": ["repository"],
+  "db": ["database"],
+  "api": ["endpoint", "endpoints"],
+  "ci": ["continuous integration", "pipeline"],
+  "cd": ["continuous delivery", "continuous deployment"],
+  "pr": ["pull request", "merge request", "mr"],
+  "svc": ["service"],
+  "deploy": ["deployment"],
+  "sec": ["security", "secure"],
+  "cert": ["certificate", "certificates", "tls", "ssl"]
+}

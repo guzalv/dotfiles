@@ -37,7 +37,11 @@ import yaml
 from rapidfuzz import fuzz
 
 AI_DIR = Path(__file__).parent
-SYNONYMS_FILE = AI_DIR / "library" / "synonyms.json"  # reuse the AI library synonyms
+# Optional synonym expansion. Reuses the AI library synonyms if present. The file
+# is personal/work-specific, so it is NOT tracked in version control. A generic
+# template ships alongside it (synonyms.example.json); copy it to enable this.
+SYNONYMS_FILE = AI_DIR / "library" / "synonyms.json"
+SYNONYMS_EXAMPLE = AI_DIR / "library" / "synonyms.example.json"
 
 DIRS = {
     "current": AI_DIR / "current-work",
@@ -320,6 +324,11 @@ def resolve_scope(args) -> list[str]:
 
 
 def cmd_query(args):
+    if not SYNONYMS_FILE.exists():
+        hint = f"note: no synonyms file at {SYNONYMS_FILE}; synonym expansion is off."
+        if SYNONYMS_EXAMPLE.exists():
+            hint += f" Copy {SYNONYMS_EXAMPLE.name} to {SYNONYMS_FILE.name} (same dir) to enable it."
+        print(hint, file=sys.stderr)
     synonyms = load_synonyms()
     term_groups = query_term_groups(args.query, synonyms)
     entries = load_entries(resolve_scope(args))
