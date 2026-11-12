@@ -1,0 +1,14 @@
+# Ignore rules for the dotfiles repo (git-dir ~/dotfiles/.git, work-tree $HOME).
+# Scoped to this repo only; other repos use their own .gitignore.
+
+# Local machine secrets — never commit (holds API tokens / keys).
+.bash/99-work.sh
+
+# Personal work notes: track the directories (via .keep) but not their contents.
+# Notes may contain sensitive data (customer cases, internal details).
+/ai/current-work/*
+/ai/future-work/*
+/ai/previous-work/*
+!/ai/current-work/.keep
+!/ai/future-work/.keep
+!/ai/previous-work/.keep
