@@ -4,6 +4,9 @@
 # Local machine secrets — never commit (holds API tokens / keys).
 .bash/99-work.sh
 
+# Personal/work-specific synonyms used by work.py (tracked template: synonyms.example.json).
+/ai/library/synonyms.json
+
 # Personal work notes: track the directories (via .keep) but not their contents.
 # Notes may contain sensitive data (customer cases, internal details).
 /ai/current-work/*
