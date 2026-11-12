@@ -12,11 +12,15 @@
 
 ## Tracking progress
 
-Track ongoing work in `~/ai/current-work/<topic>.md` files, and deferred follow-ups in `~/ai/future-work/<topic>.md`, to enable seamless session resumption. Do this only when it makes sense — skip it for questions you can just answer.
+Ongoing work lives in `~/ai/current-work/<topic>.md`, deferred follow-ups in `~/ai/future-work/<topic>.md`, and archived work in `~/ai/previous-work/`. These enable seamless session resumption. Do this only when it makes sense — skip it for questions you can just answer.
 
-On startup: check `~/ai/current-work/` and `~/ai/future-work/`. If topics exist, confirm with the user (or list them if there are several) before resuming. Mention outstanding future-work items so nothing is forgotten.
+Query the registry with `~/ai/work.py` (modeled on the AI library). Each topic file starts with YAML frontmatter holding `status` and `tags`. All other fields are derived from the body.
 
-Full file formats, examples, and lifecycle rules (when to create/update/archive, future-work promotion): `~/.agents/tracking-progress.md`. Read it before creating or updating any of these files.
+- Match a prompt to existing work: distill the prompt into a few keywords (plus any ticket IDs) and run `~/ai/work.py query "<terms>"`. A ticket ID is an exact match. If a result clears the score threshold, read its file and resume. Confirm with the user before resuming on a fuzzy-only match. If nothing clears the threshold, treat it as new work.
+- On startup or for an overview: run `~/ai/work.py list` (active current-work) instead of reading every file. Add `--all` to include future and previous work. Mention outstanding future-work items so nothing is forgotten.
+- New topic files must start with frontmatter: `status` (active|blocked|done) and `tags` (lowercase search keywords, including concepts not in the title). Keep both current.
+
+Full file formats, query flags, examples, and lifecycle rules (create/update/archive, future-work promotion): `~/.agents/tracking-progress.md`. Read it before creating or updating any of these files.
 
 ## AI Assistant Guidelines
 

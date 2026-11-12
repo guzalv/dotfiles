@@ -1,16 +1,45 @@
 ## Tracking progress
 
-Track ongoing work in `~/ai/current-work/<topic>.md` files to enable seamless session resumption.
+Track ongoing work in `~/ai/current-work/<topic>.md` files to enable seamless session resumption. Archived work moves to `~/ai/previous-work/`, deferred follow-ups live in `~/ai/future-work/`.
 
 Do this only when it makes sense. If the prompt is a question that you know the answer to, skip this.
 
+### The registry and query tool
+
+The three work dirs form a registry queried with `~/ai/work.py` (modeled on `~/ai/library/query.py`, and reusing its `synonyms.json`). Do not read every topic file — query the registry.
+
+Each topic file starts with YAML frontmatter holding only the non-derivable fields:
+```yaml
+---
+status: active        # active | blocked | done  (future-work: future; previous-work: done)
+tags:                 # lowercase search keywords; include concepts NOT in the title
+  - compliance-operator
+  - stale-data
+  - sweeper
+---
+```
+Everything else (title, summary, tickets, PR URLs, last-updated date) is derived from the body at query time, so there is nothing to keep in sync. `tags` drive search recall — add terms a future search would use that the title does not already contain.
+
+Commands:
+- `~/ai/work.py query "<terms>"` — distill the prompt into a few keywords plus any ticket IDs, then query. Output is ranked JSON (`id, title, summary, status, tickets, dir, updated, path, score`). A ticket ID (e.g. `ROX-1234`) is an exact match forced to the top. Scope defaults to current-work; add `--all` or `--include current,future,previous`. Status filter defaults to `active`; use `--status all` to include done/blocked.
+- `~/ai/work.py list` — overview of active current-work (title, status, tickets, date). Add `--all` for every dir, `--json` for machine output.
+
+Scoring is IDF-weighted term overlap (rare terms matter more), with title/tags weighted above the summary. The default score threshold is 0.5 (`SCORE_THRESHOLD` in `work.py`).
+
+### Matching a prompt to existing work
+1. Distill the prompt into keywords (+ ticket IDs) and run `~/ai/work.py query "<terms>"`.
+2. If a result clears the threshold, read its `path` and resume from there.
+3. For a fuzzy-only match (no exact ticket hit), confirm with the user before resuming.
+4. If nothing clears the threshold, treat it as new work.
+
 ### On startup
-1. Check `~/ai/current-work/` for existing topic files
-2. If multiple topics exist, list them and ask the user what they want to work on
-3. If a single topic exists, confirm with the user before resuming
+1. Run `~/ai/work.py list` for the active current-work overview.
+2. If multiple topics exist, list them and ask the user what they want to work on.
+3. If a single topic exists, confirm with the user before resuming.
+4. Mention outstanding future-work items (`~/ai/work.py list --include future`) so nothing is forgotten.
 
 ### Topic file format
-Each `~/ai/current-work/<topic>.md` should contain:
+Each `~/ai/current-work/<topic>.md` must start with the frontmatter block shown above (`status` + `tags`), then contain:
 - **Summary**: Brief description of the work (1-2 sentences)
 - **Code locations**: Primary repos/directories where code changes happen
 - **PRs**: Full GitHub PR URLs (e.g. `https://github.com/owner/repo/pull/123`). **Always** add PR URLs here when creating or discovering PRs related to the work. This is critical — external tooling parses these URLs.
@@ -20,6 +49,13 @@ Each `~/ai/current-work/<topic>.md` should contain:
 
 -------------- Example topic file starts --------------
 ```markdown
+---
+status: active
+tags:
+  - tailored-profiles
+  - compliance
+  - custom-rules
+---
 # Tailored Profiles (ROX-23456)
 
 ## Summary
@@ -69,7 +105,7 @@ When identifying follow-ups during active work, **proactively suggest** creating
 
 #### Future-work file format
 
-Each `~/ai/future-work/<topic>.md` should contain:
+Each `~/ai/future-work/<topic>.md` must start with the frontmatter block (`status: future` + `tags`), then contain:
 - **Summary**: What needs to be done and why (1-3 sentences)
 - **Origin**: How this was identified — link to the current-work topic, PR, or conversation where it came up
 - **Context**: Relevant code locations, files, or references needed to pick this up later
@@ -78,6 +114,14 @@ Each `~/ai/future-work/<topic>.md` should contain:
 
 -------------- Example future-work file starts --------------
 ```markdown
+---
+status: future
+tags:
+  - compliance
+  - csv-export
+  - streaming
+  - memory
+---
 # Refactor compliance CSV export to streaming
 
 ## Summary
