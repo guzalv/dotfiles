@@ -4,8 +4,8 @@
     cia     = commit --amend
     co      = checkout
     cp      = cherry-pick
-    dl      = log -p --ext-diff
-    ds      = show --ext-diff
+    dl      = -c diff.external=difft log -p --ext-diff
+    ds      = -c diff.external=difft show --ext-diff
     hist    = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     lol     = log --abbrev-commit --decorate --graph --pretty=oneline
     lola    = log --abbrev-commit --all --decorate --graph --pretty=oneline
@@ -30,3 +30,11 @@
 
 [gpg]
 	format = ssh
+[commit]
+	gpgsign = true
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
