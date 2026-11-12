@@ -1,4 +1,7 @@
 export PS1='\
+[\A] \$ '
+
+export PS1='\
 \[\e[1m\]\u\[\e[0m\]\
 @\
 \[\e[1;32m\]'"$(hostname)"'\[\e[0m\] \

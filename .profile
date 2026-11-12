@@ -20,3 +20,10 @@ fi
 for directory in $(find ~/bin -type d -not -path "*.git*"); do
     PATH="${directory}:${PATH}"
 done
+
+. "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/gualvare/.lmstudio/bin"
+# End of LM Studio CLI section
+

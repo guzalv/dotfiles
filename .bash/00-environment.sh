@@ -69,12 +69,16 @@ if [ "$(uname)" = "Darwin" ] && [ -d "${COREUTILS_DIR}" ]; then
 fi
 
 # More colors for "ls" command
-if command -v dircolors &>/dev/null; then
+if command -v dircolors &> /dev/null; then
     eval "$(dircolors -b)"
 fi
 
 if [ -d /opt/homebrew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if [ -d /opt/homebrew/opt/coreutils/libexec/gnubin ]; then
+    export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 fi
 
 if [ -d "${HOME}/go" ]; then
