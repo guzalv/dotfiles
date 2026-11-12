@@ -1,7 +1,6 @@
 ---
 description: Gates changes on simplicity and engineering rigor — built to resist being argued into approving
 mode: all
-model: google-vertex/claude-opus-4-8@default#high
 color: "#f59e0b"
 permissions:
   - action: edit

@@ -1,7 +1,6 @@
 ---
 description: Implements changes end to end — the team's hands-on engineer
 mode: all
-model: google-vertex/claude-sonnet-5@default#high
 color: "#8b5cf6"
 permissions:
   - action: edit

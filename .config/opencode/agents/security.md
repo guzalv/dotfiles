@@ -1,7 +1,6 @@
 ---
 description: Adversarial security and compliance review, plus CVE triage — the team's security engineer
 mode: all
-model: google-vertex/claude-sonnet-5@default#high
 color: "#ef4444"
 permissions:
   - action: edit

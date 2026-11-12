@@ -1,7 +1,6 @@
 ---
 description: Validates changes against acceptance criteria on real systems — the team's QA engineer
 mode: all
-model: google-vertex/claude-sonnet-5@default#high
 color: "#22c55e"
 permissions:
   - action: edit

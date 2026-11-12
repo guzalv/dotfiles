@@ -1,7 +1,6 @@
 ---
 description: Scopes work and defines acceptance criteria — the team's product owner
 mode: all
-model: google-vertex/claude-sonnet-5@default#high
 color: "#3b82f6"
 permissions:
   - action: edit
