@@ -1,0 +1,9 @@
+{
+  "docs": [
+    {
+      "id": "example/example-doc",
+      "summary": "Example doc entry. Copy this file to docs-index.json and replace with real knowledge docs. Each entry maps to a file under docs/<id>.md.",
+      "tags": ["example", "placeholder", "template"]
+    }
+  ]
+}

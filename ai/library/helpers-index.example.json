@@ -1,0 +1,9 @@
+{
+  "helpers": [
+    {
+      "id": "example/hello.sh",
+      "summary": "Example helper entry. Copy this file to helpers-index.json and replace with real reusable scripts. Each entry maps to a file under helpers/<id>.",
+      "tags": ["example", "placeholder", "template"]
+    }
+  ]
+}
