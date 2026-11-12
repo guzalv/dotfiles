@@ -15,15 +15,3 @@ if [ -n "$BASH_VERSION" ]; then
         . "$HOME/.bashrc"
     fi
 fi
-
-# set PATH so it includes user's private bin directories
-for directory in $(find ~/bin -type d -not -path "*.git*"); do
-    PATH="${directory}:${PATH}"
-done
-
-. "$HOME/.local/bin/env"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/gualvare/.lmstudio/bin"
-# End of LM Studio CLI section
-
