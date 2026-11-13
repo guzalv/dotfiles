@@ -1,1 +1,1 @@
-/Users/gualvare/ai/agents/po.md
+../../ai/agents/po.md

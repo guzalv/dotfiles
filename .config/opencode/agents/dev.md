@@ -1,1 +1,1 @@
-/Users/gualvare/ai/agents/dev.md
+../../../ai/agents/dev.md

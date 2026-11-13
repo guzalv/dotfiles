@@ -1,1 +1,1 @@
-/Users/gualvare/ai/agents/security.md
+../../../ai/agents/security.md

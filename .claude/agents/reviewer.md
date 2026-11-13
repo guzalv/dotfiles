@@ -1,1 +1,1 @@
-/Users/gualvare/ai/agents/reviewer.md
+../../ai/agents/reviewer.md
