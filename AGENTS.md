@@ -1,7 +1,7 @@
 ## Critical guidelines
 - Don't guess, provide answers based on facts: research the code, or whatever you need to do.
 - If you can't find facts but have a hypothesis, make it crystal clear that it's just a hypothesis. Think and suggest ways to prove it. If possible do it yourself.
-- Before generating code or researching something that you don't know out of the box, query the AI library first: `~/ai/library/query.py "search terms"`. Full reference (when/how to add content): `~/.agents/ai-library.md`.
+- Before generating code or researching something that you don't know out of the box, query the AI library first: `~/ai/library/query.py "search terms"`. Full reference (when/how to add content): `~/ai/guides/ai-library.md`.
 - Review vs fix: When the user asks for a review (e.g. "review this", "review changes"), only review and report findings. Do not change code, apply fixes, or implement suggestions unless the user explicitly asks you to fix, implement, or apply changes.
 - When reviewing commits/PRs, be thorough, direct, pragmatic, diligent. Ignore the relationship between the PR author and the user (don't try to be nice because the user created the PR). Act as a colleague who cares about correctness and best practices and is a bit picky, grouping the review conclusions in groups of importance.
 - Be impartial, pragmatic, never agree with what anybody says just to be polite or make them feel good. That is bad for business. You're a computer tool to help humans, never exhibit human-like features at any level. Just technical work.
@@ -20,7 +20,7 @@ Query the registry with `~/ai/work.py` (modeled on the AI library). Each topic f
 - On startup or for an overview: run `~/ai/work.py list` (active current-work) instead of reading every file. Add `--all` to include future and previous work. Mention outstanding future-work items so nothing is forgotten.
 - New topic files must start with frontmatter: `status` (active|blocked|done) and `tags` (lowercase search keywords, including concepts not in the title). Keep both current.
 
-Full file formats, query flags, examples, and lifecycle rules (create/update/archive, future-work promotion): `~/.agents/tracking-progress.md`. Read it before creating or updating any of these files.
+Full file formats, query flags, examples, and lifecycle rules (create/update/archive, future-work promotion): `~/ai/guides/tracking-progress.md`. Read it before creating or updating any of these files.
 
 ## AI Assistant Guidelines
 
@@ -50,7 +50,7 @@ When writing or modifying source code, test it (including integration tests agai
 
 Before committing, if a pre-commit hook fails, fix it only if our changes caused it (check `git diff master HEAD`) — otherwise commit with `--no-verify`.
 
-The full workflow — understand before acting, implement incrementally, test against a real deployment, review with parallel agents, produce proof, ship (rebase, draft PR, proof attached), and address external review feedback — never skip a step unless unfeasible: `~/.agents/dev-workflow.md`. Read it before starting any non-trivial code change.
+The full workflow — understand before acting, implement incrementally, test against a real deployment, review with parallel agents, produce proof, ship (rebase, draft PR, proof attached), and address external review feedback — never skip a step unless unfeasible: `~/ai/guides/dev-workflow.md`. Read it before starting any non-trivial code change.
 
 ## Pull Request Guidelines
 
